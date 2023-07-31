@@ -4,14 +4,14 @@
 
 | Column | Type | Options |
 | --- | --- | --- |
-| email | string | NOT NULL, unique: true|
-| encrypted_password | string | NOT NULL|
-| nickname（ニックネーム） | string | NOT NULL|
-| last_name（名字） | string | NOT NULL |
-| first_name（名前） | string | NOT NULL|
-| last_name_kana（名字カナ） | string | NOT NULL|
-| first_name_kana（名前カナ） | string | NOT NULL|
-| birthday（生年月日） | date | NOT NULL|
+| email | string | null: false, unique: true|
+| encrypted_password | string | null: false|
+| nickname（ニックネーム） | string | null: false|
+| last_name（名字） | string | null: false |
+| first_name（名前） | string | null: false|
+| last_name_kana（名字カナ） | string | null: false|
+| first_name_kana（名前カナ） | string | null: false|
+| birthday（生年月日） | date | null: false|
 
 ### Association
 
@@ -22,15 +22,15 @@
 
 | Column | Type | Options |
 | --- | --- | --- |
-| name（商品名） | string | NOT NULL |
-| price（価格） | string | NOT NULL|
-| info（商品の説明） | text | NOT NULL|
-| category_id（カテゴリー） | integer | NOT NULL |
-| status_id（商品の状態） | integer | NOT NULL |
-| shipping_fee_id（配送料の負担） | integer | NOT NULL |
-| prefectures_id（配送元の地域） | integer | NOT NULL |
-| shipping_date_id（発送日の目安） | integer | NOT NULL |
-| user | references | NOT NULL, foreign_key: true |
+| name（商品名） | string | null: false |
+| price（価格） | integer | null: false|
+| info（商品の説明） | text | null: false|
+| category_id（カテゴリー） | integer | null: false |
+| status_id（商品の状態） | integer | null: false |
+| shipping_fee_id（配送料の負担） | integer | null: false |
+| prefecture_id（配送元の地域） | integer | null: false |
+| shipping_date_id（発送日の目安） | integer | null: false |
+| user | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -41,8 +41,8 @@
 
 | Column | Type | Options |
 | --- | --- | --- |
-| user | references | NOT NULL, foreign_key: true |
-| item | references | NOT NULL, foreign_key: true |
+| user | references | null: false, foreign_key: true |
+| item | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -54,13 +54,13 @@
 
 | Column | Type | Options |
 | --- | --- | --- |
-| postal_code（郵便番号） | string | NOT NULL |
-| prefectures_id（都道府県） | integer | NOT NULL|
-| city（市区町村） | string | NOT NULL|
-| addresses（番地） | string | NOT NULL |
+| postal_code（郵便番号） | string | null: false |
+| prefecture_id（都道府県） | integer | null: false|
+| city（市区町村） | string | null: false|
+| addresses（番地） | string | null: false |
 | building（建物名） | string | |
-| phone_number（電話番号） | string | NOT NULL |
-| order | references | NOT NULL, foreign_key: true |
+| phone_number（電話番号） | string | null: false |
+| order | references | null: false, foreign_key: true |
 
 ### Association
 
