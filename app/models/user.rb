@@ -8,8 +8,7 @@ class User < ApplicationRecord
   has_many :orders
   
   # パスワードは、半角英数字混合での入力が必須である
-  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
-  validates :password, format: { with: PASSWORD_REGEX, message: 'は半角英数を両方含む必要があります'}
+  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i }
   validates :nickname, presence: true
   # お名前(全角)は、全角（漢字・ひらがな・カタカナ）での入力が必須である
   validates :last_name, presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥]+\z/ }
