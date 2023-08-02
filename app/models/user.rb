@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-  # has_many :items
+  has_many :items
   # has_many :orders
   
   # パスワードは、半角英数字混合での入力が必須である
