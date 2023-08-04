@@ -1,12 +1,20 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @items = Item.includes(:user).order("created_at DESC")
+    # 売却済みかどうかのテスト変数 中身を入れると全て売却済みになる
+    @itemsell = nil
   end
   
   def new
     @item = Item.new
+  end
+
+  def show
+    @item = Item.find(params[:id])
+    # 売却済みかどうかのテスト変数 中身を入れると全て売却済みになる
+    @itemsell = nil
   end
 
   def create
