@@ -54,7 +54,7 @@ class ItemsController < ApplicationController
 
   def contributor_confirmation
     # 編集対象とユーザーが異なる場合、あるいは売却済みの場合トップページへ遷移
-    if (current_user != @item.user) || !@item.order.nil?
+    if (current_user != @item.user) || @item.order
       redirect_to root_path
     end
   end
