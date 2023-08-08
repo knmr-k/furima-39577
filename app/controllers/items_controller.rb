@@ -1,5 +1,4 @@
 class ItemsController < ApplicationController
-  before_action :item_sell            # 売却済みかどうかのテスト変数
   before_action :authenticate_user!, except: [:index, :show]
   before_action :item_set, only: [:show, :edit, :update, :destroy]
   before_action :contributor_confirmation, only: [:edit, :update, :destroy]
@@ -55,13 +54,8 @@ class ItemsController < ApplicationController
 
   def contributor_confirmation
     # 編集対象とユーザーが異なる場合、あるいは売却済みの場合トップページへ遷移
-    if (current_user != @item.user) || @itemsell
+    if (current_user != @item.user) || @item.order
       redirect_to root_path
     end
-  end
-
-  def item_sell
-    # 売却済みかどうかのテスト変数 中身を入れると全て売却済みになる
-    @itemsell = nil
   end
 end

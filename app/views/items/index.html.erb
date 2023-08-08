@@ -133,8 +133,7 @@
         <div class='item-img-content'>
           <%= image_tag item.image, class: "item-img" %>
 
-          <%# 条件式の設定が必要 %>
-          <% if @itemsell %>
+          <% if item.order %>
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>

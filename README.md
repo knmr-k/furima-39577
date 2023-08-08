@@ -57,7 +57,7 @@
 | postal_code（郵便番号） | string | null: false |
 | prefecture_id（都道府県） | integer | null: false|
 | city（市区町村） | string | null: false|
-| addresses（番地） | string | null: false |
+| house_number（番地） | string | null: false |
 | building（建物名） | string | |
 | phone_number（電話番号） | string | null: false |
 | order | references | null: false, foreign_key: true |
